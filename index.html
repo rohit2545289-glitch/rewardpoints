@@ -7,6 +7,7 @@
     <title>Get My Reward</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -24,7 +25,6 @@
             justify-content: center;
         }
 
-        /* ===== MAIN CONTAINER ===== */
         .reward-container {
             max-width: 480px;
             width: 100%;
@@ -46,7 +46,6 @@
             opacity: 0.03;
         }
 
-        /* ===== HEADER ===== */
         .reward-header {
             display: flex;
             align-items: center;
@@ -72,7 +71,6 @@
             color: #64748b;
         }
 
-        /* ===== GREETING ===== */
         .greeting {
             margin-bottom: 8px;
         }
@@ -93,7 +91,6 @@
             margin-top: 4px;
         }
 
-        /* ===== EMAIL SECTION ===== */
         .email-section {
             background: #f8faff;
             border-radius: 20px;
@@ -226,6 +223,7 @@
             line-height: 1.5;
         }
 
+        /* ✅ CLAIM BUTTON - WHATSAPP */
         .reward-card .claim-btn {
             margin-top: 16px;
             background: #FFD700;
@@ -239,6 +237,9 @@
             transition: all 0.3s;
             font-family: 'Inter', sans-serif;
             box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .reward-card .claim-btn:hover {
@@ -246,7 +247,6 @@
             box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
         }
 
-        /* ===== OFFERS SECTION ===== */
         .offers-header {
             display: flex;
             justify-content: space-between;
@@ -273,7 +273,6 @@
             color: #0D47A1;
         }
 
-        /* ===== OFFERS GRID ===== */
         .offers-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -337,7 +336,6 @@
             color: #1a1a2e;
         }
 
-        /* ===== WHATSAPP BUTTON ===== */
         .whatsapp-btn {
             display: flex;
             align-items: center;
@@ -367,7 +365,6 @@
             font-size: 22px;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 420px) {
             .reward-container {
                 padding: 20px 16px 30px;
@@ -419,8 +416,6 @@
             }
         }
     </style>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -455,14 +450,14 @@
             </button>
         </div>
 
-        <!-- ===== REWARD CARD ===== -->
+        <!-- ===== REWARD CARD WITH WHATSAPP ===== -->
         <div class="reward-card">
             <div class="badge">🔥 Limited Offer</div>
             <div class="amount">₹4,999 <span>Instant</span></div>
             <div class="title">Claim Your Reward</div>
             <div class="desc">Get instant reward points on your credit card</div>
-            <button class="claim-btn" onclick="claimReward()">
-                <i class="fas fa-gift"></i> Claim Now
+            <button class="claim-btn" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Claim Now
             </button>
         </div>
 
@@ -473,31 +468,24 @@
         </div>
 
         <div class="offers-grid">
-            <!-- Offer 1 -->
             <div class="offer-item">
                 <span class="tag">Popular</span>
                 <div class="icon">🛒</div>
                 <div class="name">Shopping</div>
                 <div class="points">10% Cashback</div>
             </div>
-
-            <!-- Offer 2 -->
             <div class="offer-item">
                 <span class="tag green">Active</span>
                 <div class="icon">✈️</div>
                 <div class="name">Travel</div>
                 <div class="points">20% Off</div>
             </div>
-
-            <!-- Offer 3 -->
             <div class="offer-item">
                 <span class="tag gold">Limited</span>
                 <div class="icon">☕</div>
                 <div class="name">Dining</div>
                 <div class="points">15% Cashback</div>
             </div>
-
-            <!-- Offer 4 -->
             <div class="offer-item">
                 <span class="tag">New</span>
                 <div class="icon">📱</div>
@@ -507,15 +495,22 @@
         </div>
 
         <!-- ===== WHATSAPP BUTTON ===== -->
-        <a href="https://wa.me/919341107469" target="_blank" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i>
-            Claim Now
+        <a href="https://wa.me/916389907905?text=Hi%2C%20I%27m%20interested%20in%20redeeming%20my%20reward%20points.%20Kindly%20share%20the%20official%20link%20or%20app%20to%20redeem%20them.%20Thank%20you" target="_blank" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Claim Now
         </a>
 
     </div>
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // ===== WHATSAPP FUNCTION =====
+        function openWhatsApp() {
+            const phone = '916389907905';
+            const message = "Hi, I'm interested in redeeming my reward points. Kindly share the official link or app to redeem them. Thank you";
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
         // ===== COPY EMAIL =====
         function copyEmail() {
             const email = 'getmyreward@sbi.co.in';
@@ -532,31 +527,6 @@
                 alert('Email: ' + email);
             });
         }
-
-        // ===== CLAIM REWARD =====
-        function claimReward() {
-            const btn = document.querySelector('.claim-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                btn.innerHTML = '✅ Claimed!';
-                btn.style.background = '#22c55e';
-                btn.style.color = '#ffffff';
-                btn.disabled = false;
-                alert('🎉 ₹4,999 reward points credited to your account!');
-            }, 2000);
-        }
-
-        // ===== WHATSAPP REDIRECT =====
-        document.querySelector('.whatsapp-btn').addEventListener('click', function (e) {
-            // Auto message
-            const phone = '919341107469';
-            const message = 'I want to claim my reward. Please help me.';
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            this.href = url;
-        });
     </script>
 
 </body>
