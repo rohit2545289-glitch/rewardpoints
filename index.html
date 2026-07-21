@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Get My Reward</title>
+    <title>Get My Reward • Limit Increase</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -91,6 +91,63 @@
             margin-top: 4px;
         }
 
+        /* --- LIMIT INCREASE BANNER (NEW) --- */
+        .limit-banner {
+            background: linear-gradient(145deg, #0D47A1, #0a3a8a);
+            border-radius: 20px;
+            padding: 14px 18px;
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            box-shadow: 0 6px 20px rgba(13, 71, 161, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .limit-banner .limit-icon {
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 40px;
+            padding: 6px 14px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .limit-banner .limit-text {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .limit-banner .limit-text strong {
+            font-size: 18px;
+            color: #FFD700;
+        }
+
+        .limit-banner .limit-cta {
+            background: #FFD700;
+            color: #0D47A1;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        .limit-banner .limit-cta:hover {
+            transform: scale(1.04);
+            background: #ffe44d;
+        }
+
         .email-section {
             background: #f8faff;
             border-radius: 20px;
@@ -163,7 +220,7 @@
             transform: scale(1.04);
         }
 
-        /* ===== REWARD CARD ===== */
+        /* REWARD CARD */
         .reward-card {
             background: linear-gradient(135deg, #0D47A1, #CE1754);
             border-radius: 24px;
@@ -223,7 +280,6 @@
             line-height: 1.5;
         }
 
-        /* ✅ CLAIM BUTTON - WHATSAPP */
         .reward-card .claim-btn {
             margin-top: 16px;
             background: #FFD700;
@@ -336,6 +392,7 @@
             color: #1a1a2e;
         }
 
+        /* WHATSAPP BUTTON - MAIN CTA */
         .whatsapp-btn {
             display: flex;
             align-items: center;
@@ -354,15 +411,26 @@
             margin-top: 20px;
             font-family: 'Inter', sans-serif;
             text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
         }
 
         .whatsapp-btn:hover {
             transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
         }
 
         .whatsapp-btn i {
             font-size: 22px;
+        }
+
+        /* limit increase badge in offers */
+        .offer-item.limit-offer {
+            background: linear-gradient(145deg, #f0f7ff, #ffffff);
+            border: 2px solid #FFD700;
+        }
+
+        .offer-item.limit-offer .tag {
+            background: #0D47A1;
         }
 
         @media (max-width: 420px) {
@@ -408,6 +476,12 @@
             .offer-item .name {
                 font-size: 12px;
             }
+
+            .limit-banner {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 350px) {
@@ -419,10 +493,9 @@
 </head>
 
 <body>
-
     <div class="reward-container">
 
-        <!-- ===== HEADER ===== -->
+        <!-- HEADER -->
         <div class="reward-header">
             <div class="logo">Get<span>My</span>Reward</div>
             <button class="menu-btn" onclick="alert('Menu coming soon!')">
@@ -430,13 +503,14 @@
             </button>
         </div>
 
-        <!-- ===== GREETING ===== -->
+        <!-- GREETING -->
         <div class="greeting">
             <h1>Hello, <span>User!</span></h1>
             <p>You have <strong style="color:#CE1754;">4,999</strong> reward points</p>
         </div>
 
-        <!-- ===== EMAIL SECTION ===== -->
+
+        <!-- EMAIL SECTION -->
         <div class="email-section">
             <div class="email-icon">
                 <i class="fas fa-at"></i>
@@ -450,29 +524,43 @@
             </button>
         </div>
 
-        <!-- ===== REWARD CARD WITH WHATSAPP ===== -->
+        <!-- REWARD CARD WITH WHATSAPP -->
         <div class="reward-card">
             <div class="badge">🔥 Limited Offer</div>
             <div class="amount">₹4,999 <span>Instant</span></div>
             <div class="title">Claim Your Reward</div>
             <div class="desc">Get instant reward points on your credit card</div>
-            <button class="claim-btn" onclick="openWhatsApp()">
+            <button class="claim-btn" onclick="openWhatsAppLimit()">
                 <i class="fab fa-whatsapp"></i> Claim Now
             </button>
         </div>
+        <!-- ⭐ LIMIT INCREASE BANNER — CLICK → WHATSAPP -->
+        <div class="limit-banner" onclick="openWhatsAppLimit()" style="cursor: pointer;">
+            <div class="limit-icon">
+                <i class="fas fa-arrow-up"></i> + ₹50K
+            </div>
+            <div class="limit-text">
+                <strong>Credit Limit</strong> <span style="opacity:0.7;margin-left:4px;">|</span> <span
+                    style="font-weight:300;">₹1,50,000</span>
+            </div>
+            <button class="limit-cta" onclick="event.stopPropagation(); openWhatsAppLimit();">
+                <i class="fab fa-whatsapp"></i> Increase
+            </button>
+        </div>
 
-        <!-- ===== OFFERS ===== -->
+        <!-- OFFERS -->
         <div class="offers-header">
             <h3>🎯 View All Offers</h3>
             <a style="visibility: hidden;" href="#" class="view-all">See All →</a>
         </div>
 
         <div class="offers-grid">
-            <div class="offer-item">
-                <span class="tag">Popular</span>
-                <div class="icon">🛒</div>
-                <div class="name">Shopping</div>
-                <div class="points">10% Cashback</div>
+            <!-- offer 1: limit increase (special) -->
+            <div class="offer-item limit-offer" onclick="openWhatsAppLimit()">
+                <span class="tag" style="background: #FFD700; color: #0D47A1;">🔥 TOP</span>
+                <div class="icon">💳</div>
+                <div class="name">Limit Increase</div>
+                <div class="points">+ ₹50,000</div>
             </div>
             <div class="offer-item">
                 <span class="tag green">Active</span>
@@ -494,19 +582,18 @@
             </div>
         </div>
 
-        <!-- ===== WHATSAPP BUTTON ===== -->
-        <a href="https://wa.me/916389907905?text=Hi%2C%20I%27m%20interested%20in%20redeeming%20my%20reward%20points.%20Kindly%20share%20the%20official%20link%20or%20app%20to%20redeem%20them.%20Thank%20you" target="_blank" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Claim Now
+        <!-- WHATSAPP BUTTON — MAIN CTA -->
+        <a href="#" class="whatsapp-btn" onclick="openWhatsAppLimit(); return false;">
+            <i class="fab fa-whatsapp"></i> Increase Limit Now
         </a>
 
     </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ===== WHATSAPP FUNCTION =====
-        function openWhatsApp() {
+        // ===== WHATSAPP REDIRECT FOR LIMIT INCREASE =====
+        function openWhatsAppLimit() {
             const phone = '916389907905';
-            const message = "Hi, I'm interested in redeeming my reward points. Kindly share the official link or app to redeem them. Thank you";
+            const message = "Hi, I want to increase my credit card limit. Please share the official link or process to increase my limit. Thank you.";
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         }
@@ -523,12 +610,13 @@
                     btn.innerHTML = originalText;
                     btn.style.background = '#0D47A1';
                 }, 2000);
-            }).catch(() => {
-                alert('Email: ' + email);
-            });
+            }).catch(() => alert('Email: ' + email));
         }
-    </script>
 
+        // (optional) also handle the limit banner click via the onclick already in HTML
+        // additional console log for fun
+        console.log('✅ GetMyReward • Limit increase ready → WhatsApp');
+    </script>
 </body>
 
 </html>
